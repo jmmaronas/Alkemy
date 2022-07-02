@@ -5,8 +5,8 @@ const opreationRoute = Router()
 
 opreationRoute.get('/', read)
 opreationRoute.post('/new', create)
-opreationRoute.put('/update', update)
-opreationRoute.delete('/delete', del)
+opreationRoute.put('/update/:id', update)
+opreationRoute.delete('/delete/:id', del)
 
 
 export default opreationRoute

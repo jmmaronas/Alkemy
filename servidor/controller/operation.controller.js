@@ -1,9 +1,11 @@
 import { myKnex } from "../db.js"
 
-export const create = (req, res) => {
+
+export const create =async (req, res) => {
+    console.log(req.body)
     try {
-        //myKnex('Operaciones').insert()
-        return res.send("created")
+        const [id]=await myKnex('Operaciones').insert(req.body)
+        return res.json({id})
     } catch (err) { console.error(err) }
 }
 
@@ -13,16 +15,19 @@ export const read = async (req, res) => {
     } catch (err) { console.error(err) }
 }
 
-export const update = (req, res) => {
+export const update =async (req, res) => {
+    console.log(req.body)
+    console.log(req.params.id)
     try {
-        //myKnex('Operaciones').select('*')
+        await myKnex('Operaciones').where({id:req.params.id}).update(req.body)
         return res.send("update")
     } catch (err) { console.error(err) }
 }
 
-export const del = (req, res) => {
+export const del =async (req, res) => {
+    console.log(req.params.id)
     try {
-        //myKnex('Operaciones').select('*')
+        await myKnex('Operaciones').where({id:req.params.id}).del()
         return res.send("delete")
     } catch (err) { console.error(err) }
 }

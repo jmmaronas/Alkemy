@@ -3,9 +3,9 @@ import {myKnex} from './db.js'
 myKnex.schema.createTable("Operaciones",(table) => {
     table.increments("id"),
     table.string("concept"),
-    table.string("mont"),
+    table.integer("amount"),
     table.string("date"),
-    table.string("tipo")
+    table.string("type")
 })
     .then(() => console.log("table created"))
     .catch((err) => { console.log(err.message) })
