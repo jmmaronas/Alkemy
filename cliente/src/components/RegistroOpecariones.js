@@ -1,8 +1,21 @@
+import { useContexto } from "./context/operacionesContext.js"
+
 export default function RegistroOperaciones() {
+    const { crearOperacion } = useContexto()
+    const handleSubmit = (e) => {
+        e.preventDefault()
+        const concept = document.getElementById("concept").value
+        const amount = document.getElementById("amount").value
+        const type = document.getElementById("type").value
+        const date = document.getElementById("date").value
+        console.log(concept, amount, type, date)
+        crearOperacion({ concept, amount: Number(amount), type, date })
+        window.location.href="/"
+    }
     return (
         <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-4">
             <div className="max-w-md w-full space-y-8">
-                <form className="mt-8 space-y-6" action="#" method="POST">                    
+                <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <div className="rounded-md shadow-sm -space-y-px">
                         <div>
                             <label htmlFor="concept" className="">
@@ -11,7 +24,7 @@ export default function RegistroOperaciones() {
                             <input
                                 id="concept"
                                 name="concept"
-                                type="text"                                
+                                type="text"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Detalles"
@@ -24,7 +37,7 @@ export default function RegistroOperaciones() {
                             <input
                                 id="amount"
                                 name="amount"
-                                type="number"                                
+                                type="number"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Monto"
@@ -37,7 +50,7 @@ export default function RegistroOperaciones() {
                             <input
                                 id="date"
                                 name="date"
-                                type="date"                                
+                                type="date"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                                 placeholder="Monto"
@@ -47,15 +60,16 @@ export default function RegistroOperaciones() {
                             <label htmlFor="type" >
                                 Tipo
                             </label>
-                            <select 
-                                name="type"                                 
+                            <select
+                                id="type"
+                                name="type"
                                 required
                                 className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                                >
-                                <option value="">Seleccione tipo de operacion..</option>                                    
+                            >
+                                <option value="">Seleccione tipo de operacion..</option>
                                 <option value="ingreso">Ingreso</option>
                                 <option value="egreso">Egreso</option>
-                            </select>                            
+                            </select>
                         </div>
                     </div>
                     <div>
