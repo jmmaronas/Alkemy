@@ -13,6 +13,7 @@ function App() {
       <BrowserRouter>        
         <Routes>
           <Route path='/' element={<Home />} />
+          <Route path='/operaciones' element={<ContenedorOperaciones />} />
           <Route path='/operaciones/:filter' element={<ContenedorOperaciones />} />
           <Route path='/new' element={<RegistroOperaciones />} />
           <Route path='/update/:id' element={<ActualizarOperacion />} />

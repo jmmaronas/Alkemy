@@ -12,7 +12,7 @@ export function useContexto() {
 function OperacionesProvider({ children }) {
     const [operaciones, setOperaciones] = useState()
     useEffect(() => {
-        fetch("http://localhost:8080/operation/")
+        fetch("/operation/")
             .then(result => result.json())
             .then(data => {
                 setOperaciones(data)
@@ -23,7 +23,7 @@ function OperacionesProvider({ children }) {
     }, [])
 
     const crearOperacion = async (data) => {
-        await fetch("http://localhost:8080/operation/", {
+        await fetch("/operation/", {
             method: 'POST',
             body: JSON.stringify(data),
             headers: {
@@ -34,7 +34,7 @@ function OperacionesProvider({ children }) {
 
     const updateOperaciones = async (id, data) => {
         console.log(data)
-        await fetch(`http://localhost:8080/operation/${id}`, {
+        await fetch(`/operation/${id}`, {
             method: 'PUT',
             body: JSON.stringify(data),
             headers: {

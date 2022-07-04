@@ -10,7 +10,7 @@ export default function ContenedorOperaciones() {
 
     useEffect(() => {        
         if (!filter) {            
-            fetch("http://localhost:8080/operation/")
+            fetch("/operation/")
                 .then(result => result.json())
                 .then(data => {
                     setItems(data)                    
@@ -21,7 +21,7 @@ export default function ContenedorOperaciones() {
                     setError(error)
                 })
         } else {            
-            fetch("http://localhost:8080/operation/")
+            fetch("/operation/")
                 .then(result => result.json())
                 .then(data => {
                     if (filter === "ingresos") {

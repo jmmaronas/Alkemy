@@ -15,7 +15,8 @@ export default function ActualizarOperacion() {
         window.location.href="/"
     }
     return (
-        <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-4">
+        <div className="min-h-full flex flex-col align-middle items-center justify-center py-12 px-4 sm:px-6 lg:px-4">
+            <h1 className="w-full text-center text-2xl">Actualizar Operacion</h1>
             <div className="max-w-md w-full space-y-8">
                 <form onSubmit={handleSubmit} className="mt-8 space-y-6" action="#" method="POST">
                     <div className="rounded-md shadow-sm -space-y-px">
